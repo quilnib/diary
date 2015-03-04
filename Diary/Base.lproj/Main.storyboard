@@ -56,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="727" y="368"/>
         </scene>
-        <!--New Entry View Controller-->
+        <!--Entry View Controller-->
         <scene sceneID="fH1-7J-JtI">
             <objects>
-                <viewController id="6ZR-sD-PFC" customClass="NewEntryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6ZR-sD-PFC" customClass="EntryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iGL-9I-Hwq"/>
                         <viewControllerLayoutGuide type="bottom" id="qaB-F6-uQr"/>

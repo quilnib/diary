@@ -52,6 +52,16 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
         return cell
     }
     
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = self.theFetchedResultsController!.sections![section] as NSFetchedResultsSectionInfo
+        
+        return sectionInfo.name
+    }
 
     //MARK: - fetch requests and controllers
     
@@ -73,18 +83,50 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
                 return self.theFetchedResultsController!
             }
         
-            let coreDataStack = CoreDataStack.defaultStack()
+            let coreDataStack = CoreDataStack.defaultStack
             var fetchRequest = self.entryListFetchRequest()
             
-            self.theFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+            self.theFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "sectionName", cacheName: nil)
             self.fetchedResultsController.delegate = self
             
             return self.theFetchedResultsController!
             }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.reloadData()
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {//starts making the changes to the tableView
+        self.tableView.beginUpdates()
+    }
+    
+    //preps any thing that did change
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {//this should not be passing optionals!!!!
+        switch type {
+        case .Insert:
+            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        case .Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        case .Update:
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        default:
+            return
+        }
+    }
+    
+    //this is called when a section is either created or deleted (or changed I guess)
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case .Insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: UITableViewRowAnimation.Automatic)
+        case .Delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: UITableViewRowAnimation.Automatic)
+        default:
+            return
+            
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) { //finishes updating the tableview after changes
+        self.tableView.endUpdates()
+        //self.tableView.reloadData()
     }
     
     /*
@@ -95,17 +137,23 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            var entry = self.fetchedResultsController.objectAtIndexPath(indexPath) as DiaryEntry
+            var coreDataStack = CoreDataStack.defaultStack as CoreDataStack
+            coreDataStack.managedObjectContext!.deleteObject(entry)
+            coreDataStack.saveContext()
+            
+            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

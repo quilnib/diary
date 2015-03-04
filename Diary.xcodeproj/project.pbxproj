@@ -16,7 +16,7 @@
 		83775B001AA131F800126B8B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775AFF1AA131F800126B8B /* CoreDataStack.swift */; };
 		83775B0F1AA64E3200126B8B /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83775B0D1AA64E3200126B8B /* Diary.xcdatamodeld */; };
 		83775B111AA64E8E00126B8B /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B101AA64E8E00126B8B /* DiaryEntry.swift */; };
-		83775B131AA65DB500126B8B /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B121AA65DB500126B8B /* NewEntryViewController.swift */; };
+		83775B131AA65DB500126B8B /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B121AA65DB500126B8B /* EntryViewController.swift */; };
 		83775B151AA669F500126B8B /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B141AA669F500126B8B /* EntryListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,7 @@
 		83775AFF1AA131F800126B8B /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		83775B0E1AA64E3200126B8B /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
 		83775B101AA64E8E00126B8B /* DiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
-		83775B121AA65DB500126B8B /* NewEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
+		83775B121AA65DB500126B8B /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		83775B141AA669F500126B8B /* EntryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 			children = (
 				83775ADC1AA1319100126B8B /* AppDelegate.swift */,
 				83775B141AA669F500126B8B /* EntryListViewController.swift */,
-				83775B121AA65DB500126B8B /* NewEntryViewController.swift */,
+				83775B121AA65DB500126B8B /* EntryViewController.swift */,
 				83775B101AA64E8E00126B8B /* DiaryEntry.swift */,
 				83775AFF1AA131F800126B8B /* CoreDataStack.swift */,
 				83775AE11AA1319100126B8B /* ViewController.swift */,
@@ -231,7 +231,7 @@
 				83775B111AA64E8E00126B8B /* DiaryEntry.swift in Sources */,
 				83775B0F1AA64E3200126B8B /* Diary.xcdatamodeld in Sources */,
 				83775ADD1AA1319100126B8B /* AppDelegate.swift in Sources */,
-				83775B131AA65DB500126B8B /* NewEntryViewController.swift in Sources */,
+				83775B131AA65DB500126B8B /* EntryViewController.swift in Sources */,
 				83775B151AA669F500126B8B /* EntryListViewController.swift in Sources */,
 				83775B001AA131F800126B8B /* CoreDataStack.swift in Sources */,
 			);
@@ -425,6 +425,7 @@
 				83775AFB1AA1319200126B8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83775AFC1AA1319200126B8B /* Build configuration list for PBXNativeTarget "DiaryTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +434,7 @@
 				83775AFE1AA1319200126B8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

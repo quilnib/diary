@@ -19,11 +19,24 @@ class DiaryEntry: NSManagedObject {
     @NSManaged var mood: Int16
     @NSManaged var location: String
     
+    var sectionName: String {
+        get {
+            var date: NSDate = NSDate(timeIntervalSince1970: self.date)
+            
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("MMM yyyy")
+            //dateFormatter.dateFromString("MMM yyyy")
+            
+            return dateFormatter.stringFromDate(date)
+        }
+    }
+    
     
     enum diaryEntryMood: int_fast16_t {
         case DiaryEntryMoodGood = 0
         case DiaryEntryMoodAverage = 1
         case DiaryEntryMoodBad = 2
     }
+    
 
 }

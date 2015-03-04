@@ -13,7 +13,6 @@ class CoreDataStack: NSObject {
     
     // MARK: - Core Data stack
     
-    
     required override init() {
         super.init()
     }
@@ -22,7 +21,6 @@ class CoreDataStack: NSObject {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.classictim.Diary" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         
-        println(urls)
         return urls[urls.count-1] as NSURL
         }()
     
@@ -81,20 +79,29 @@ class CoreDataStack: NSObject {
         }
     }
     
-   class func defaultStack() -> CoreDataStack { //create one and only one CoreDataStack
-        var defaultStack: CoreDataStack?
-        var onceToken: dispatch_once_t = 0
-        
-        dispatch_once(&onceToken, { () -> Void in
-            defaultStack = self()
-        })
+//   class func defaultStack() -> CoreDataStack { //create one and only one CoreDataStack // this approach only allows you to access the defaultStack once.  Then every time after that it will be nil.
+//        var defaultStack: CoreDataStack?
+//        var onceToken: dispatch_once_t = 0
+//        
+//        dispatch_once(&onceToken, { () -> Void in
+//            defaultStack = self()
+//        })
+//    
+//        return defaultStack!
+//    }
     
-        return defaultStack!
+    
+    class var defaultStack: CoreDataStack { //create one and only one CoreDataStack
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: CoreDataStack? = nil
+        }
+            dispatch_once(&Static.onceToken) {
+            Static.instance = CoreDataStack()
+        }
+        return Static.instance!
     }
     
-//    class Singleton  { //try something like this instead of the dispatch_once call
-//        static let sharedInstance = Singleton()
-//    }
 
    
 }

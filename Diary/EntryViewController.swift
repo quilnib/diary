@@ -1,5 +1,5 @@
 //
-//  NewEntryViewController.swift
+//  EntryViewController.swift
 //  Diary
 //
 //  Created by Tim Walsh on 3/3/15.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class NewEntryViewController: UIViewController {
+class EntryViewController: UIViewController {
     
 
     @IBOutlet weak var textField: UITextField!
@@ -39,7 +39,7 @@ class NewEntryViewController: UIViewController {
     */
     
     func insertDiaryEntry() {
-        let coreDataStack = CoreDataStack.defaultStack()
+        let coreDataStack = CoreDataStack.defaultStack
         
         var entry: DiaryEntry = NSEntityDescription.insertNewObjectForEntityForName("DiaryEntry", inManagedObjectContext: coreDataStack.managedObjectContext!) as DiaryEntry
         
