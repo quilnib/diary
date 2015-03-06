@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83127ED01AA7BBD4006BDCED /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83127ECF1AA7BBD4006BDCED /* NavigationController.swift */; };
+		83127ED21AA7C05C006BDCED /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83127ED11AA7C05C006BDCED /* EntryCell.swift */; };
 		83775ADD1AA1319100126B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775ADC1AA1319100126B8B /* AppDelegate.swift */; };
 		83775AE21AA1319100126B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775AE11AA1319100126B8B /* ViewController.swift */; };
 		83775AE51AA1319100126B8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83775AE31AA1319100126B8B /* Main.storyboard */; };
@@ -18,6 +20,9 @@
 		83775B111AA64E8E00126B8B /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B101AA64E8E00126B8B /* DiaryEntry.swift */; };
 		83775B131AA65DB500126B8B /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B121AA65DB500126B8B /* EntryViewController.swift */; };
 		83775B151AA669F500126B8B /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83775B141AA669F500126B8B /* EntryListViewController.swift */; };
+		83DA62851AA80E9B00EC1B4C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DA62841AA80E9B00EC1B4C /* MobileCoreServices.framework */; };
+		83DA62871AA8ED9C00EC1B4C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DA62861AA8ED9C00EC1B4C /* QuartzCore.framework */; };
+		83DA62891AA8F12D00EC1B4C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DA62881AA8F12D00EC1B4C /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83127ECF1AA7BBD4006BDCED /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		83127ED11AA7C05C006BDCED /* EntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		83775AD71AA1319100126B8B /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83775ADB1AA1319100126B8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83775ADC1AA1319100126B8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +53,9 @@
 		83775B101AA64E8E00126B8B /* DiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
 		83775B121AA65DB500126B8B /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		83775B141AA669F500126B8B /* EntryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryListViewController.swift; sourceTree = "<group>"; };
+		83DA62841AA80E9B00EC1B4C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		83DA62861AA8ED9C00EC1B4C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		83DA62881AA8F12D00EC1B4C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83DA62891AA8F12D00EC1B4C /* CoreLocation.framework in Frameworks */,
+				83DA62871AA8ED9C00EC1B4C /* QuartzCore.framework in Frameworks */,
+				83DA62851AA80E9B00EC1B4C /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,9 +82,12 @@
 		83775ACE1AA1319100126B8B = {
 			isa = PBXGroup;
 			children = (
+				83DA62881AA8F12D00EC1B4C /* CoreLocation.framework */,
 				83775AD91AA1319100126B8B /* Diary */,
 				83775AF21AA1319200126B8B /* DiaryTests */,
 				83775AD81AA1319100126B8B /* Products */,
+				83DA62841AA80E9B00EC1B4C /* MobileCoreServices.framework */,
+				83DA62861AA8ED9C00EC1B4C /* QuartzCore.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +106,8 @@
 				83775ADC1AA1319100126B8B /* AppDelegate.swift */,
 				83775B141AA669F500126B8B /* EntryListViewController.swift */,
 				83775B121AA65DB500126B8B /* EntryViewController.swift */,
+				83127ECF1AA7BBD4006BDCED /* NavigationController.swift */,
+				83127ED11AA7C05C006BDCED /* EntryCell.swift */,
 				83775B101AA64E8E00126B8B /* DiaryEntry.swift */,
 				83775AFF1AA131F800126B8B /* CoreDataStack.swift */,
 				83775AE11AA1319100126B8B /* ViewController.swift */,
@@ -228,8 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				83775AE21AA1319100126B8B /* ViewController.swift in Sources */,
+				83127ED01AA7BBD4006BDCED /* NavigationController.swift in Sources */,
 				83775B111AA64E8E00126B8B /* DiaryEntry.swift in Sources */,
 				83775B0F1AA64E3200126B8B /* Diary.xcdatamodeld in Sources */,
+				83127ED21AA7C05C006BDCED /* EntryCell.swift in Sources */,
 				83775ADD1AA1319100126B8B /* AppDelegate.swift in Sources */,
 				83775B131AA65DB500126B8B /* EntryViewController.swift in Sources */,
 				83775B151AA669F500126B8B /* EntryListViewController.swift in Sources */,

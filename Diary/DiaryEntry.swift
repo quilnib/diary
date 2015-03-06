@@ -32,7 +32,7 @@ class DiaryEntry: NSManagedObject {
     }
     
     
-    enum diaryEntryMood: int_fast16_t {
+    enum DiaryEntryMood: Int16 {
         case DiaryEntryMoodGood = 0
         case DiaryEntryMoodAverage = 1
         case DiaryEntryMoodBad = 2

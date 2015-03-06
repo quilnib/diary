@@ -13,13 +13,26 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.setupAppearance()//set global design parameters
+        
         return true
     }
 
+    func setupAppearance() {//set the appearance for all UINavigationBars
+        var navigationBarAppearance = UINavigationBar.appearance() as UINavigationBar
+        navigationBarAppearance.barTintColor = UIColor(red: 77/255.0, green: 164/255.0, blue: 191/255.0, alpha: 1.0)
+        navigationBarAppearance.tintColor = UIColor.whiteColor()
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

@@ -18,6 +18,9 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
 
         
         self.fetchedResultsController.performFetch(nil)
+        self.tableView.estimatedRowHeight = 144.0 //set the default row height
+        self.tableView.rowHeight = UITableViewAutomaticDimension //allow the rows to automatically scale to larger data
+
     
         //self.theFetchedResultsController!.performFetch(nil)
     
@@ -28,6 +31,8 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -43,11 +48,13 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as EntryCell
 
         // Configure the cell...
         let entry = self.fetchedResultsController.objectAtIndexPath(indexPath) as DiaryEntry
-        cell.textLabel?.text = entry.body
+        
+        cell.configureCellForEntry(entry)
+        //cell.textLabel?.text = entry.body
 
         return cell
     }
@@ -63,7 +70,7 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
         return sectionInfo.name
     }
 
-    //MARK: - fetch requests and controllers
+    //MARK: - fetch requests and NSFetchedResultsController delegate methods
     
     func entryListFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DiaryEntry") //create the fetch request for the entity we want
@@ -72,9 +79,6 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
         
         return fetchRequest
     }
-    
-    
-    
     
     
     var fetchedResultsController: NSFetchedResultsController {//override the getter of theFetchedResultsController with fetchedResultsController
@@ -128,15 +132,12 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
         self.tableView.endUpdates()
         //self.tableView.reloadData()
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let entry = self.fetchedResultsController.objectAtIndexPath(indexPath) as DiaryEntry
+//        
+//        return EntryCell.heightForEntry(entry)
+//    }
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -154,6 +155,14 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
         }    
     }
     
+    
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    // Return NO if you do not want the specified item to be editable.
+    return true
+    }
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -170,14 +179,22 @@ class EntryListViewController: UITableViewController, NSFetchedResultsController
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "edit") {
+            var cell = sender as UITableViewCell
+            var indexPath = self.tableView.indexPathForCell(cell)
+            var navigationController = segue.destinationViewController as UINavigationController
+            var entryViewController = navigationController.topViewController as EntryViewController
+            entryViewController.entry = (self.fetchedResultsController.objectAtIndexPath(indexPath!) as DiaryEntry)
+        }
     }
-    */
+    
 
 }
